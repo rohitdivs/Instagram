@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import SummaryApi from "../../API";
 
 const Createpost = () => {
   const [title, setTitle] = useState("");
@@ -10,8 +11,8 @@ const Createpost = () => {
 
   useEffect(() => {
     if (url) {
-      fetch("http://localhost:2048/createpost", {
-        method: "post",
+      fetch(SummaryApi.createPost.API, {
+        method:SummaryApi.createPost.method,
         headers: {
           "Content-Type": "application/json",
           Authorization: "Bearer " + localStorage.getItem("jwt"),

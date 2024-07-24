@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { userContext } from "../../App";
 import { Link, useParams } from "react-router-dom";
+import SummaryApi from "../../API";
 
 const Followerlist = () => {
   const { id } = useParams();
@@ -12,7 +13,7 @@ const Followerlist = () => {
   }, []);
 
   const fetchList = () => {
-    fetch(`http://localhost:2048/followerlist/${id}`, {
+    fetch(`${SummaryApi.Followerlist.API}/${id}`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("jwt"),
